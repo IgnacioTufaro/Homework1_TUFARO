@@ -6,11 +6,11 @@ using namespace std;
 constexpr bool b_compare_words_char(const char* word1, const char* word2, int idx=0){
     if(word1[idx]=='\0' && word2[idx]=='\0') return true;
 
-    if(word1[idx] != word2[idx]) return false;
-    
-    return b_compare_words_char(word1, word2, idx+1);
-}
+    if(word1[idx] != word2[idx]) return false; 
+    if (word1[idx] == '\0' || word2[idx] == '\0') return false;
 
+    return compare_words_char(word1, word2, idx+1);
+}
 
 int main(){
     constexpr const char* w1 = "hola como estas";

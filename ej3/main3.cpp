@@ -1,95 +1,16 @@
 #include <iostream>
-#include <memory>
+#include "header3.h"
 using namespace std;
 
-struct node{
-    int value;
-    shared_ptr<node> next;
-};
-struct list{
-    shared_ptr<node> head;
-    size_t size;
-};
+/*
+Ejecutar en consola:
+g++ -o ej3/main3_ex ej3/main3.cpp ej3/funcs3.cpp
+valgrind --leak-check=full ./ej3/main3_ex
+*/
 
-shared_ptr<node> create_node(int value, shared_ptr<node> next = nullptr){
-    shared_ptr<node> new_node = make_shared<node>();
-    new_node->value = value;
-    new_node->next = next;
-    return new_node;
-}  
-
-shared_ptr<list> create_list(){
-    shared_ptr<list> new_list = make_shared<list>();
-    new_list->head = nullptr;
-    new_list->size = 0;
-    return new_list;
-}
-
-void push_front(const shared_ptr<list>& list, int value){ 
-    shared_ptr<node> new_node = create_node(value, list->head);
-    list->head = new_node;
-    list->size++;
-}
-
-void push_back(const shared_ptr<list>& list, int value){
-    shared_ptr<node> new_node = create_node(value);
-    if(!list->head) list->head = new_node;
-    else{
-        shared_ptr<node> temp = list->head;
-        while(temp->next) temp = temp->next;
-        temp->next = new_node;
-    }
-    list->size++;
-}
-
-void insert(const shared_ptr<list>& list, int value, int pos){
-    if(pos>list->size){
-        cout<<"Posicion fuera de rango, se inserto al final de la lista"<<endl;
-        push_back(list, value);
-        return;
-    }
-    if(pos==0) {
-        push_front(list, value); 
-        return;
-    }
-    shared_ptr<node> new_node = create_node(value);
-    shared_ptr<node> temp = list->head;
-    for(int i=0; i<pos-1; i++) temp = temp->next;
-    new_node->next = temp->next;
-    temp->next = new_node;
-    list->size++; 
-}
-
-void erase(const shared_ptr<list>& list, int pos){
-    if(!list->head){
-        cout<<"La lista estaba vacia, no se elimino nada"<<endl;
-        return;
-    }
-    if(pos>=list->size){
-        cout<<"Posicion fuera de rango, se elimino el ultimo nodo"<<endl;
-        pos = list->size -1;
-    }
-    if(pos==0) list->head = list->head->next;
-    else{
-        shared_ptr<node> temp = list->head;
-        for(int i=0; i<pos-1; i++) temp = temp->next;
-        if(!temp->next->next) temp->next = nullptr;
-        else temp->next = temp->next->next;
-    }
-    list->size--;
-}
-
-void print_list(const shared_ptr<list>& list){
-    shared_ptr<node> temp = list->head;
-    while(temp){
-        cout<<temp->value;
-        if(temp->next)cout<<"->";
-        temp=temp->next;
-    }
-    cout<<endl;
-}
 
 int main(){
+    cout<<"Comenzando tests: \n"<<endl;
     shared_ptr<list> lista = create_list();
     cout<<"lista creada con exito"<<endl;
 
@@ -113,7 +34,7 @@ int main(){
 
     cout<<"\nLas funciones push_front y push_back funcionan correctamente"<<endl;
 
-    cout<<"\nProbando la funcion erase"<<endl;
+    cout<<"\nProbando la funcion erase:"<<endl;
 
     cout<<"\nEliminando el primer elemento"<<endl;
     cout<<"Resultado esperado: 2->3->4->5->6\nTamaño esperado = 5"<<endl;
@@ -158,7 +79,7 @@ int main(){
 
     cout<<"\nProbando eliminar un elemento de una lista vacia"<<endl;
     erase(lista,0);
-    cout<<"La funcion erase funciona correctamente"<<endl;
+    cout<<"\nLa funcion erase funciona correctamente"<<endl;
 
     cout<<"\nProbando la funcion insert"<<endl;
 
@@ -186,8 +107,8 @@ int main(){
     print_list(lista);
     cout<<"Tamaño de lista  = "<<lista->size<<endl;
 
-    cout<<"La funcion insert funciona correctamente"<<endl;
-    cout<<"La implementacion funciona correctamente"<<endl;
+    cout<<"\nLa funcion insert funciona correctamente"<<endl;
+    cout<<"\nLa implementacion funciona correctamente"<<endl;
     return 0;
 }
 
