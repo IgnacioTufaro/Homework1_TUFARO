@@ -5,10 +5,10 @@ using namespace std;
 
 
 int main(){
-    string word1 = "h";
-    string word2 = "hola como estas";
-    const char* w1 = "h";
-    const char* w2 = "hola como estas";
+    string word1 = "Siempre espera con toda Certeza Cruzárselo, encontrarlo Busca momentos donde nadie la ve Para llamarlo";
+    string word2 = "Siempre espera con toda Certeza Cruzárselo, encontrarlo Busca momentos donde nadie la ve Para llamarlo";
+    const char* w1 = "Siempre espera con toda Certeza Cruzárselo, encontrarlo Busca momentos donde nadie la ve Para llamarlo";
+    const char* w2 = "Siempre espera con toda Certeza Cruzárselo, encontrarlo Busca momentos donde nadie la ve Para llamarlo";
 
     auto startTime1 = chrono::high_resolution_clock::now(); 
     bool result1= compare_words_str(word1,word2);
@@ -21,4 +21,14 @@ int main(){
     auto endTime2 = chrono::high_resolution_clock::now(); 
     auto elapsedTime2 = chrono::duration_cast<std::chrono::nanoseconds>(endTime2 - startTime2); 
     cout<<"A comparar char* le tomó: "<<elapsedTime2.count()<<" nanosegundos - Resultado: "<<result2<<endl;
+
+    constexpr const char* w11 = "Siempre espera con toda Certeza Cruzárselo, encontrarlo Busca momentos donde nadie la ve Para llamarlo";
+    constexpr const char* w22 = "Siempre espera con toda Certeza Cruzárselo, encontrarlo Busca momentos donde nadie la ve Para llamarlo";
+
+    auto startTime3 = chrono::high_resolution_clock::now(); 
+    constexpr bool result3 = b_compare_words_char(w11,w22);
+    auto endTime3 = chrono::high_resolution_clock::now(); 
+    auto elapsedTime3 = chrono::duration_cast<std::chrono::nanoseconds>(endTime3 - startTime3); 
+    cout<<"A comparar char* en compilacion le tomó: "<<elapsedTime3.count()<<" nanosegundos - Resultado: "<<result3<<endl;
+
 }

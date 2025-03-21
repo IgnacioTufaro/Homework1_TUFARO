@@ -1,5 +1,5 @@
 #include "header4.h"
-
+using namespace std;
 
 bool compare_words_str(const string word1,const string word2, int idx){
     /*Compara cada caracter indice por indice de las palabras utilizando la recursividad.
@@ -26,3 +26,4 @@ bool compare_words_char(const char* word1, const char* word2, int idx){
     //Llamado recursivo
     return compare_words_char(word1, word2, idx+1);
 }
+

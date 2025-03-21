@@ -1,7 +1,7 @@
 #include "header1.h" 
 #include <iostream>
 using namespace std;
-
+//TRY Y CATCH AL ASIGNAR MEMORIAAAAA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 int** createMtx(int size){
     //La funcion crea una matriz de array of arrays en memoria dinamica
     //Creo mi array principal que va a contener las filas de la matriz
