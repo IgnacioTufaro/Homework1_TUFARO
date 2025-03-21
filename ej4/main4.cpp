@@ -3,7 +3,6 @@
 #include "header4.h"
 using namespace std;
 
-
 int main(){
     string word1 = "Siempre espera con toda Certeza Cruzárselo, encontrarlo Busca momentos donde nadie la ve Para llamarlo";
     string word2 = "Siempre espera con toda Certeza Cruzárselo, encontrarlo Busca momentos donde nadie la ve Para llamarlo";

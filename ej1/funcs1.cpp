@@ -1,14 +1,27 @@
 #include "header1.h" 
 #include <iostream>
 using namespace std;
-//TRY Y CATCH AL ASIGNAR MEMORIAAAAA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 int** createMtx(int size){
     //La funcion crea una matriz de array of arrays en memoria dinamica
     //Creo mi array principal que va a contener las filas de la matriz
-    int** mtx= new int*[size];
-    //Creo las correspondientes filas de la matriz y las asigno a mi array principal
-    for(int i=0; i<size; i++){
-        mtx[i] = new int[size];
+    int** mtx = nullptr;
+    //Pruebo si puedo asignarle memoria 
+    try{
+        mtx= new int*[size];
+        //Creo las correspondientes filas de la matriz y las asigno a mi array principal
+        for(int i=0; i<size; i++){
+            mtx[i] = new int[size];
+        }
+    }
+    catch (const std::bad_alloc){ //Si falla la asignacion, libero lo que ya reserve y lanzo el error
+        if (mtx) {
+            for(int i=0; i<size; i++) {
+                delete[] mtx[i];
+            }
+            delete[] mtx;
+        }
+        throw std::runtime_error("Fallo la asignacion de memoria");
     }
     //Relleno la matriz con los valores correspondientes
     int val=1; //me guardo la variable que asigna el valor
