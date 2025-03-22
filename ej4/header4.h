@@ -3,7 +3,7 @@
 
 #include <string>
 
-bool compare_words_str(const std::string word1,const std::string word2, int idx=0);
+bool compare_words_str(const std::string& word1,const std::string& word2, int idx=0);
 bool compare_words_char(const char* word1, const char* word2, int idx=0);
 
 constexpr bool b_compare_words_char(const char* word1, const char* word2, int idx=0){

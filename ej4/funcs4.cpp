@@ -1,7 +1,7 @@
 #include "header4.h"
 using namespace std;
 
-bool compare_words_str(const string word1,const string word2, int idx){
+bool compare_words_str(const string& word1,const string& word2, int idx){
     /*Compara cada caracter indice por indice de las palabras utilizando la recursividad.
     Si en algun momento alguno es distinto, entonces es falso, 
     si ambos llegan al final sin cortarse es porque son iguales(true)

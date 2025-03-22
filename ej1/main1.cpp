@@ -12,6 +12,13 @@ int main(){
     int size;
     cout<<"Indice el tamaño de su matriz cuadrada: ";
     cin>>size;
+
+    //Verifico que se haya pasado un valor correcto:
+    if(cin.fail() || size<1){
+        cerr<<"Error, se detuvo la ejecucion porque se ingreso un parametro invalido"<<endl;
+        return 1;
+    }
+
     //Llamo a mi funcion para crear la matriz
     int** mtx = createMtx(size);
     //Llamo a la funcion para imprimir la matriz
